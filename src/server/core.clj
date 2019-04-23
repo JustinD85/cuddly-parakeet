@@ -1,7 +1,17 @@
 (ns server.core
-  (:gen-class))
+  (:gen-class)
+  (:require [clojure.java.jdbc :as jdbc]))
 
-(defn -main
-  "I don't do a whole lot ... yet."
-  [& args]
-  (println "Hello, World!"))
+(def db
+  {
+   :dbtype "postgresql"
+   :dbname "tcg"
+   :user "client"
+   :password "client"
+   })
+
+(def all_in_table
+  (jdbc/query db ["Select * from test"])
+  )
+(def id "TCG Database")
+
